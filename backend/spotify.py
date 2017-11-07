@@ -17,8 +17,6 @@ class SpotifyEntry:
     def __str__(self):
         return '{} by {}'.format(self.name, self.artist)
 
-pp = pprint.PrettyPrinter(indent=2)
-
 class SpotifyApi:
 
     def __init__(self):
@@ -29,9 +27,6 @@ class SpotifyApi:
         results = self.spotify.search(query, limit=limit)['tracks']['items']
         spotify_entries = []
         for result in results:
-           #result.pop('album', None)
-           #result.pop('available_markets', None)
-           #pp.pprint(result)
            spotify_entries.append(SpotifyEntry(result['id'], result['name'], result['artists'][0]['name']))
         return spotify_entries
 
